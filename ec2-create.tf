@@ -9,23 +9,23 @@ resource "aws_instance" "Terraform_Instance" {
   ami                    = "ami-0ed17ff3d78e74700"
   instance_type          = "t3.micro"
   vpc_security_group_ids = [aws_security_group.StandartWeb.id]
-  key_name               = "Important2"
+  key_name               = "Exam"
 
   tags = {
     Name    = "Created using terraform"
-    Owner   = "Itsep"
-    Project = "Test project"
+    Owner   = "Vitaliy"
+    Project = "Exam"
   }
 }
 
 resource "aws_security_group" "StandartWeb" {
   name        = "StandartWeb SG"
-  description = "Allow 80, 443, 22 inbound traffic"
+  description = "Allow 22, 80, 8080 inbound traffic"
 
   ingress {
-    description = "Allow 443"
-    from_port   = 443
-    to_port     = 443
+    description = "Allow 22"
+    from_port   = 22
+    to_port     = 22
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
@@ -39,9 +39,9 @@ resource "aws_security_group" "StandartWeb" {
   }
 
   ingress {
-    description = "Allow 22"
-    from_port   = 22
-    to_port     = 22
+    description = "Allow 8080"
+    from_port   = 8080
+    to_port     = 8080
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
